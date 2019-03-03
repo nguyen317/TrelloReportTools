@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	"TrelloReportTools/database"
+	"TrelloReportTools/modules"
 	"fmt"
-	"report/database"
-	"report/modules"
 
 	"github.com/adlio/trello"
 	"github.com/gin-gonic/gin"
@@ -105,12 +105,12 @@ func SaveCardsOnDB(c *gin.Context) {
 }
 
 func UpdateCards(c *gin.Context) {
-	idBoard := c.Param("id")
+	idBoard := c.Param("id_board")
 	cardsOnBoard, err := GetCardsOnBoard(idBoard)
 	if err != nil {
 		// Handle error
 	}
-
+	fmt.Println(cardsOnBoard)
 	for _, v := range cardsOnBoard {
 		tmpCard := modules.Card{
 			ID:   v.ID,
