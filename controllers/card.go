@@ -3,7 +3,6 @@ package controllers
 import (
 	"TrelloReportTools/database"
 	"TrelloReportTools/modules"
-	"fmt"
 
 	"github.com/adlio/trello"
 	"github.com/gin-gonic/gin"
@@ -27,7 +26,6 @@ func GetAllCardReview(c *gin.Context) {
 	for _, v := range cardsOnListReviewMe {
 		myCardsOnReviewMe = append(myCardsOnReviewMe, tmpcard.NewCard(v))
 	}
-	fmt.Println(myCardsOnReviewMe)
 	for _, v := range cardsOnListDone {
 		myCardsOnDone = append(myCardsOnDone, tmpcard.NewCard(v))
 	}
@@ -110,7 +108,6 @@ func UpdateCards(c *gin.Context) {
 	if err != nil {
 		// Handle error
 	}
-	fmt.Println(cardsOnBoard)
 	for _, v := range cardsOnBoard {
 		tmpCard := modules.Card{
 			ID:   v.ID,

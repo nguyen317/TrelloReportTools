@@ -2,7 +2,6 @@ package database
 
 import (
 	"TrelloReportTools/modules"
-	"fmt"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
@@ -36,14 +35,10 @@ func UpdateCard(card modules.Card) {
 	db.Where("id = ?", card.ID).First(&newCard)
 
 	if newCard.ID == "" { // Create new card
-		fmt.Println("create")
-		fmt.Println(card)
 		db.Create(&card)
 	} else { // Update old card
 		newCard.Name = card.Name
 		newCard.Due = card.Due
-		fmt.Println("save")
-		fmt.Println(newCard)
 		db.Save(&newCard)
 	}
 }
